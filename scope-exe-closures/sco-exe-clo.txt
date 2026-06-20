@@ -1,0 +1,162 @@
+Scope
+Scope matlab ek variable ki reach kahatak hai ya ek variable kaha kaha se access kiya ja sakta hai
+1. Function Scope
+Function ke andar hi use ho sakti hai value usko function scope bolte hai
+
+2. Global Scope
+Global scope matlab poore code mai kahase bhi valueko access kar sakte hai usko Global scope bolte hai
+
+3. Block Scope
+BLock scope matlab {} curly brace mein use ho sakte hai isme function word ka use nhi kiya jata
+E.g.: if loop, if-else loop, etc. ye sab block scope mai ate hai
+
+** Execution Context **
+JS mai sabse pahle jaise hi apka function dekhta hai sabse peeehle JS banata hai execution context, ye ek process hai jo ki do different phases main chalta hai, memory phase and doosre ka naam hai execution phase.
+
+function(){
+    var a = 11;
+    let b = 12;
+    let c = 13;
+
+    //2k line of code
+}
+function dekhte hi dabba banaya
+dabbe ke andar variables and all with code a gaya function ke sath
+Vo code and var uss dabbe mai run hue
+Uss dabbe ko execution context bolte hai
+
+JS - lexical scoping -> ki aap kaha par physically available ho ye poori tarike se depend karta hai ki aap kaya access kar paoge
+
+function abcd(){
+    let a = 10;     <-- physically/lexically available in the entire function abcd can also be accessed by defg
+    function defg(){
+
+    }
+}
+
+
+Dynamic Scoping -> kaha se call kar rahe ho uspe depend karega ki kya value milegi
+
+
+let a = 12;
+function abc(){
+    console.log(a);
+}
+
+function def(){
+    let a = 100;
+    abc();
+}
+
+def();         --> lexical scoping ke hisab se a ki value 12 milegi kyuki a variable global scope mai hai aur abc function ke andar nahi hai, to abc function global scope mai a variable ko access karega aur 12 print karega
+
+Output: 12;
+
+
+
+
+
+
+***Closures***
+Closures hote hai fucntions jo ki kisi parent function ke andar ho aur andar wala function return ho raha ho, and returning function use kare parent function ka koi variable, to usko closure bolte hai
+
+function arpa(){
+    let a = 10;
+    return function(){
+        console.log(a);
+    }
+}                           --> this is called as closures
+
+
+
+Faide nuksan par baat cheet
+
+private variable kaar sakte ho
+Global pollution rok sakte ho code ka
+
+
+
+
+ye sach hai ki function ke khatam honepe apka function and uske variables khatam ho jate hai, par jab bhi closure banta hai to apka function aur uske variable ka backlink banaya jata hai aur uska naam hota hai [[environment]]
+
+function abcd(){            ----
+    let a = 15;                |
+    return function(){         |-----> jab mai fnc = abcd() likha 
+                                        at that point abcd() actual wala clear ho gaya but fir bhi jab maine fnc() run kiya toh abcd function run hua jo ki nhi run hona chahiye tha
+        console.log(a);        |
+    }                          |
+}                           ----
+
+let fnc = abcd();
+fnc();              --> 
+
+
+
+
+
+
+
+
+Private Coutners
+
+function countForMe(){
+    let c = 0;
+    return function(){
+        c++;
+        console.log(c);
+    }
+}
+
+//countForMe()          --> won't print anything since this is
+                            this is a closure type of functio which closes itself once it ran the right way to run these type of ofunctions is given below
+                        
+
+let fnc = countForMe();
+fnc();
+fnc();
+fnc();
+
+let fnc2 = countForMe();
+fnc2();
+fnc2();
+fnc2();
+fnc2();
+fnc2();
+fnc2();
+
+Output:--> 1
+           2
+           3
+           1
+           2
+           3
+           4
+           5
+           6
+
+
+
+
+Encapsulation
+
+function clickLimitor(){
+    let click = 0;          --> this is a pvt var this var can't
+                                be changed outside this closure function even global var can't change the value of this var
+    return function(){
+        if(click<5){
+            click++;
+            console.log(`clicked: ${click} time`);
+        }
+        else{
+            console.error(`limit exceeded`);
+        }
+    }
+}
+
+let fnccl = clickLimimtor();
+fnccl();        --> clicked: 1 time
+fnccl();        --> clicked: 2 time
+fnccl();        --> clicked: 3 time
+fnccl();        --> clicked: 4 time
+fnccl();        --> clicked: 5 time
+fnccl();        --> thrown error: limit exceeded

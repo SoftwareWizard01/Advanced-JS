@@ -1,0 +1,134 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  padding-left: 24px;
+  padding-right: 24px;
+  max-width: 1152px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.gap-10 {
+  gap: 40px;
+}
+.px-6 {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.max-w-6xl {
+  max-width: 1152px;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.bg-white\/90 {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.backdrop-blur {
+  backdrop-filter: blur(8px);
+}
+.rounded-2xl {
+  border-radius: 16px;
+}
+.shadow-xl {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+.p-8 {
+  padding: 32px;
+}
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.items-center {
+  align-items: center;
+}
+.w-28,
+.h-28 {
+  width: 112px;
+  height: 112px;
+}
+.rounded-full {
+  border-radius: 50%;
+}
+.object-cover {
+  object-fit: cover;
+}
+.mb-5 {
+  margin-bottom: 20px;
+}
+.border-4 {
+  border-width: 4px;
+  border-style: solid;
+}
+.border-blue-200 {
+  border-color: #bfdbfe;
+}
+.shadow {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.text-2xl {
+  font-size: 24px;
+}
+.font-bold {
+  font-weight: 700;
+}
+.mb-1 {
+  margin-bottom: 4px;
+}
+.text-blue-700 {
+  color: #1d4ed8;
+}
+.text-purple-500 {
+  color: #a855f7;
+}
+.mb-2 {
+  margin-bottom: 8px;
+}
+.font-medium {
+  font-weight: 500;
+}
+.text-gray-700 {
+  color: #374151;
+}
+.text-center {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 440px;
+  color: #2a2a2a;
+  background-color: #f7afde;
+  width: 250px;
+  border-radius: 5px;
+  border: 2px solid #000000;
+  input {
+    margin-top: 20px;
+    padding: 5px;
+    width: 80%;
+    border-radius: 3px;
+    border: 1px solid #000000;
+  }
+  button {
+    margin-top: 10px;
+    align-self: center;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid #000000;
+    background-color: #f978b2;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #ff1190;
+  }
+}
